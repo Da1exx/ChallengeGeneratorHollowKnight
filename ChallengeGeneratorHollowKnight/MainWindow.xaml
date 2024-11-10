@@ -1,0 +1,81 @@
+﻿<Window x:Class="ChallengeGeneratorHollowKnight.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Challenge Generator" Height="900" Width="1600">
+    <!-- Увеличен размер окна -->
+    <Grid>
+        <!-- Добавляем фоновое изображение, которое будет видно на всех вкладках -->
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/wiki-background.png" Stretch="UniformToFill" />
+        </Grid.Background>
+
+        <TabControl>
+            <TabItem Header="Испытание 1">
+                <Grid>
+                    <!-- Добавляем фоновое изображение, которое будет видно на всех вкладках -->
+                    <Grid.Background>
+                        <ImageBrush ImageSource="Images/wiki-background.png" Stretch="UniformToFill" />
+                    </Grid.Background>
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent">
+                    <!-- Кнопка генерации -->
+                    <Button Content="Сгенерировать Боссов" Click="GenerateBosses_Click" Width="200" Height="50" FontSize="16"/>
+                    <!-- Увеличен размер шрифта кнопки -->
+
+                    <!-- Контейнер для изображений и текстов сложности -->
+                    <StackPanel x:Name="BossContainer" Orientation="Horizontal" Background="Transparent" />
+                </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Испытание 2">
+                <Grid>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="Images/wiki-background.png" Stretch="UniformToFill" />
+                    </Grid.Background>
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent">
+                    <Button Content="Сгенерировать Задания" Click="GenerateTasks_Click" Width="200" Height="50" FontSize="16"/>
+                    <StackPanel x:Name="TaskContainer" Orientation="Horizontal" Background="Transparent" />
+                </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Испытание 3">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="Images/wiki-background2.png" Stretch="UniformToFill" />
+                    </Grid.Background>
+                    <!-- Левая сторона - Пантеон -->
+                    <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent">
+                        <!-- Выбор пантеона -->
+                        <ComboBox x:Name="PantheonComboBox" SelectionChanged="PantheonComboBox_SelectionChanged">
+                            <ComboBoxItem Content="Пантеон Мастера" />
+                            <ComboBoxItem Content="Пантеон Художника" />
+                            <ComboBoxItem Content="Пантеон Гуру" />
+                            <ComboBoxItem Content="Пантеон Рыцаря" />
+                            <ComboBoxItem Content="Пантеон Халлоунеста" />
+                        </ComboBox>
+
+                        <!-- Изображение пантеона -->
+                        <Image x:Name="PantheonImage" Width="600" Height="600" />
+                    </StackPanel>
+
+                    <!-- Правая сторона - Ограничение -->
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent">
+                        <!-- Текст ограничения -->
+                        <TextBlock x:Name="RestrictionTextBlock" FontSize="16" />
+
+                        <!-- Изображение ограничения -->
+                        <Image x:Name="RestrictionImage" Width="450" Height="450" />
+
+                        <!-- Кнопка для переролла -->
+                        <Button Content="Переролить ограничение" Click="RerollRestriction_Click" Width="200" Height="50" FontSize="16" />
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
